@@ -1,0 +1,4 @@
+importFrom(GOstats,Ontology)
+importFrom(KEGG.db,KEGGPATHID2EXTID)
+importFrom(org.Hs.eg.db,org.Hs.egSYMBOL,org.Hs.eg2ALLEGS)
+export(nea)

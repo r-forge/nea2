@@ -1,0 +1,62 @@
+linknum.arr <-
+function(ags, fgs, netlist2, gnum=TRUE, gsym)
+{
+  if(!is.list(fgs)) fgs = list(fgs)
+  nfgs<-length(fgs)
+  nlink<-rep(0,nfgs)
+    names(nlink)<-names(fgs)
+
+## numbered version
+  g123= 1:length(gsym)
+  names(g123)= gsym
+
+## translate ags and fgs into numbers
+  agsnum = g123[ags]
+    agsnum= agsnum[!is.na(agsnum)]
+
+for (i in 1:nfgs){
+   fgsnum= g123[fgs[[i]]]  ## numbered version of fgs
+   num = as.character(unique(c(agsnum, fgsnum)))
+ 
+## sub-network1: col1 as index
+  netlist = netlist2$list1
+  sub = num[num %in% names(netlist)]
+  subnet = netlist[sub]
+
+## expand sub-network to a vector form
+    nnet = sapply(subnet, length)
+    gg1 = rep(sub, nnet)
+    gg2 = unlist(subnet)
+    asubnet1 = paste(gg1, gg2)  ## 1-2 direction here
+
+## sub-network2: col2 as index
+  netlist = netlist2$list2
+  sub = num[num %in% names(netlist)]
+  subnet = netlist[sub]
+
+## expand sub-network to a vector form
+    nnet = sapply(subnet, length)
+    gg1 = rep(sub, nnet)
+    gg2 = unlist(subnet)
+    asubnet2 = paste(gg2, gg1)  ## note the 2-1 direction here!!
+                                ## may contain mirror images of the first subnet
+    asubnet2rv = paste(gg1, gg2) 
+    mirror = asubnet2rv %in% asubnet1
+## 
+    asubnet = c(asubnet1, asubnet2[!mirror])  # no mirror images
+
+## count links on sub-network
+    agsfgs<-as.vector(outer(agsnum,fgsnum,paste))
+    fgsags<-as.vector(outer(fgsnum,agsnum,paste)) 
+    ugsnum<-c(agsfgs,fgsags) ### we do not need to use "unique" function
+    # check using the full network:
+    # net1num= list2arr(netlist2[[1]], 1:length(gsym))  # use numbers
+    # pick= (ugsnum %in% net1num)
+    # full.link= ugsnum[pick]
+    # full.link %in% asubnet
+    nlink[i]<-sum(ugsnum %in% asubnet)
+}
+  
+return(nlink)
+}
+

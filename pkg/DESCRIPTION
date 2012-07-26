@@ -1,0 +1,11 @@
+Package: nea
+Type: Package
+Title: What the package does (short line)
+Version: 1.1.1
+Date: 2011-11-29
+Author: Woojoo Lee and Yudi Pawitan
+Maintainer: Who to complain to <yourfault@somewhere.net>
+Description: More about what it does (maybe more than one line)
+License: What license is it under?
+LazyLoad: yes
+Packaged: 2011-11-29 11:36:32 UTC; Woojoo Lee
