@@ -1,11 +1,11 @@
 Package: nea
 Type: Package
-Title: What the package does (short line)
+Title: network enrichment analysis (NEA)
 Version: 1.1.1
-Date: 2011-11-29
+Date: 2012-07-29
 Author: Woojoo Lee and Yudi Pawitan
-Maintainer: Who to complain to <yourfault@somewhere.net>
-Description: More about what it does (maybe more than one line)
-License: What license is it under?
-LazyLoad: yes
-Packaged: 2011-11-29 11:36:32 UTC; Woojoo Lee
+Maintainer: Woojoo Lee <lwj221@gmail.com>
+Description: nea package implements the method of network enrichment analysis (NEA) that extends the overlap statistics in GEA to network links between genes in the experimental set and those in the functional categories proposed by Alexeyenko, et al., 2012.
+License: GPL-2
+Collate: arr2list.R countcon.R gea.R linknum.arr.csum.R linknum.arr.R linknum.list.csum.R linknum.list.R linknum.R list2arr.R list2arr0.R manypnet.R nea.R netperm.R pval2FDR.R resample.R zstat.R  
+
