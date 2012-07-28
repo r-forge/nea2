@@ -27,17 +27,17 @@ if (is.list(pnet)) {doperm<-"no";nperm<-length(pnet)}
 if (is.character(fgs) && fgs=="MF")   {fgs.type=1}
 if (is.character(fgs) && fgs=="BP")   {fgs.type=2}
 if (is.character(fgs) && fgs=="CC")   {fgs.type=3}
-if (is.character(fgs) && fgs=="KEGG") {fgs.type=4;fgs.probe <- as.list(get(paste(fgslib, "PATH2PROBE", sep = "")))}
+if (is.character(fgs) && fgs=="KEGG") {fgs.type=4;fgs.probe <- AnnotationDbi::as.list(get(paste(fgslib, "PATH2PROBE", sep = "")))}
 if (is.list(fgs)) {fgs.type=5;fgs.list<-fgs}
  
-if (fgs.type< 4) {fgs.probe <- as.list(get(paste(fgslib, "GO2PROBE", sep = "")));fgsname<-names(fgs.probe);ont<-Ontology(fgsname)}
+if (fgs.type< 4) {fgs.probe <- AnnotationDbi::as.list(get(paste(fgslib, "GO2PROBE", sep = "")));fgsname<-names(fgs.probe);ont<-Ontology(fgsname)}
 if (fgs.type==1) {fgs.probe <-  fgs.probe[which(ont=="MF")]}
 if (fgs.type==2) {fgs.probe <-  fgs.probe[which(ont=="BP")]}
 if (fgs.type==3) {fgs.probe <-  fgs.probe[which(ont=="CC")]}
 
 
 if (fgs.type<5){
-fgs.symbol<-as.list(get(paste(fgslib, "SYMBOL", sep = "")))
+fgs.symbol<-AnnotationDbi::as.list(get(paste(fgslib, "SYMBOL", sep = "")))
 
 nf<-length(fgs.probe)
 fgs.list<-list()
