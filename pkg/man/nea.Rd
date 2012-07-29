@@ -1,5 +1,6 @@
 \name{nea}
 \alias{nea}
+\alias{manypnet}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{Network Enrichment Analysis
 }
@@ -111,7 +112,7 @@ NETWORK<-c("DNAJC6 RGL1","C1ORF156 NCBP2","AHCYL1 RTN3","PLK4 SKIV2L2","C22ORF28
 res<-nea(ags=AGS, fgs = "KEGG", fgslib = "hgu133a.db", network=NETWORK, pnet = NULL, nperm = 5, stat="F", seed = 1234)
 res$nlink
 res$res.nlink
-
+}
 %## The function is currently defined as
 %AA
 % Add one or more standard keywords, see file 'KEYWORDS' in the
